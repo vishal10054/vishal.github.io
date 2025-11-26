@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vishal Tripathi — Computational Physics</title>
-  <meta name="description" content="Vishal — computational condensed matter, QFT, and ML. Portfolio and CV." />
+  <title>Vishal Tripathi</title>
+  <meta name="description" content="Vishal — computational condensed matter, QFT, and ML." />
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      /* Light Mode Variables */
+      /* Light Mode */
       --bg: #fffaf6;
       --card: #ffffff;
       --text: #1f2937;
       --muted: #6b7280;
       --border: rgba(31,41,55,0.08);
-      --accent-primary: #6366f1; /* Indigo */
-      --accent-secondary: #ec4899; /* Pink */
-      --shadow: 0 10px 30px -10px rgba(31,41,55,0.1);
+      --accent-primary: #6366f1; 
+      --accent-secondary: #ec4899;
+      --shadow: 0 4px 20px -5px rgba(31,41,55,0.1);
       --code-bg: #f3f4f6;
     }
 
-    /* Dark Mode Variables */
+    /* Dark Mode */
     [data-theme="dark"] {
       --bg: #0f172a;
       --card: #1e293b;
@@ -39,129 +39,111 @@
     * { box-sizing: border-box; transition: background-color 0.3s ease, border-color 0.3s ease; }
     
     html, body {
-      height: 100%; margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      margin: 0; font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
     }
 
     /* Layout */
-    .wrap { max-width: 1024px; margin: 0 auto; padding: 2rem; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
     
-    /* Header */
-    header { 
-      display: flex; gap: 24px; align-items: start; margin-bottom: 40px; 
-      position: relative;
-    }
-    .avatar {
-      width: 100px; height: 100px; border-radius: 20px;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; color: white; font-weight: 700;
-      box-shadow: var(--shadow);
-      flex-shrink: 0;
-    }
-    
-    h1 { margin: 0 0 4px 0; font-size: 2rem; letter-spacing: -0.02em; }
-    .lead { margin: 0; color: var(--muted); font-size: 1.1rem; }
-    
-    /* Theme Toggle */
-    .theme-toggle {
-      position: absolute; top: 0; right: 0;
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--text); padding: 8px 12px; border-radius: 99px;
-      cursor: pointer; font-size: 1.2rem;
-      transition: transform 0.2s;
-    }
-    .theme-toggle:hover { transform: scale(1.1); }
-
-    /* Navigation */
-    .nav-container {
+    /* Top Navigation Bar */
+    .navbar {
       position: sticky; top: 20px; z-index: 100;
-      margin-bottom: 2rem;
-      background: rgba(var(--card), 0.8);
+      background: rgba(var(--card), 0.85);
       backdrop-filter: blur(12px);
-      padding: 10px; border-radius: 99px;
       border: 1px solid var(--border);
-      display: inline-flex; gap: 8px; flex-wrap: wrap;
+      border-radius: 16px;
+      padding: 10px 20px;
+      margin-bottom: 40px;
+      display: flex; justify-content: space-between; align-items: center;
       box-shadow: var(--shadow);
     }
+
+    .brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+    
+    .nav-links { display: flex; gap: 4px; overflow-x: auto; }
+    
     .pill {
       background: transparent; border: none;
-      padding: 8px 16px; border-radius: 99px;
+      padding: 8px 14px; border-radius: 8px;
       font-weight: 500; color: var(--muted);
       cursor: pointer; transition: all 0.2s;
-      font-family: inherit; font-size: 0.95rem;
+      font-family: inherit; font-size: 0.9rem;
+      white-space: nowrap;
     }
     .pill:hover { color: var(--text); background: var(--border); }
-    .pill.active { 
-      background: var(--text); color: var(--bg); 
+    .pill.active { background: var(--text); color: var(--bg); }
+
+    .theme-toggle {
+      background: transparent; border: none;
+      color: var(--muted); cursor: pointer;
+      font-size: 1.1rem; padding: 8px;
+      transition: color 0.2s;
     }
+    .theme-toggle:hover { color: var(--accent-primary); }
 
     /* Main Grid */
     .grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 40px; }
     
-    /* Cards & Sections */
+    /* Cards */
     .card-panel {
       background: var(--card); border-radius: 16px;
       padding: 24px; border: 1px solid var(--border);
       box-shadow: var(--shadow); margin-bottom: 24px;
     }
     
-    h2 { font-size: 1.5rem; margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; }
+    h2 { font-size: 1.4rem; margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; }
     h3 { font-size: 1.1rem; margin: 0 0 8px 0; color: var(--text); }
     
-    /* Chips */
+    /* Chips, Timelines, Projects (Same as before) */
     .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .chip {
-      font-size: 0.8rem; padding: 4px 10px; border-radius: 6px;
-      background: var(--code-bg); color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
-      border: 1px solid var(--border);
-    }
-
-    /* Timeline CV */
-    .timeline-item {
-      position: relative; padding-left: 24px; margin-bottom: 24px;
-      border-left: 2px solid var(--border);
-    }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -6px; top: 6px;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--accent-primary);
-    }
+    .chip { font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: var(--code-bg); color: var(--text); font-family: 'JetBrains Mono', monospace; border: 1px solid var(--border); }
+    .timeline-item { position: relative; padding-left: 24px; margin-bottom: 24px; border-left: 2px solid var(--border); }
+    .timeline-item::before { content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-primary); }
     .date { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: block; }
-
-    /* Project Cards */
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-    .project-card {
-      background: var(--bg); border: 1px solid var(--border);
-      padding: 16px; border-radius: 12px;
-      transition: transform 0.2s;
-      text-decoration: none; color: inherit; display: block;
-    }
+    .project-card { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 12px; text-decoration: none; color: inherit; display: block; transition: transform 0.2s; }
     .project-card:hover { transform: translateY(-4px); border-color: var(--accent-primary); }
     .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 
-    /* Sidebar */
-    aside h4 { color: var(--muted); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; margin-top: 24px; }
-    .social-link {
-      display: flex; align-items: center; gap: 10px;
-      color: var(--text); text-decoration: none;
-      padding: 8px 0; font-weight: 500;
+    /* GALLERY STYLES (NEW) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
     }
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1; /* Makes images square */
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 20px 10px 10px;
+      color: white; font-size: 0.85rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* Sidebar */
+    .social-link { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; padding: 8px 0; font-weight: 500; }
     .social-link:hover { color: var(--accent-primary); }
     
-    /* Footer */
     footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
-      .nav-container { width: 100%; overflow-x: auto; white-space: nowrap; }
-      header { flex-direction: column; align-items: center; text-align: center; }
-      .theme-toggle { top: -10px; right: 0; }
+      .navbar { flex-wrap: wrap; gap: 10px; }
+      .nav-links { order: 3; width: 100%; padding-top: 10px; border-top: 1px solid var(--border); }
     }
   </style>
 </head>
@@ -170,29 +152,22 @@
 
   <div class="wrap">
     
-    <button class="theme-toggle" id="themeBtn" aria-label="Toggle Dark Mode">
-      <i class="fas fa-moon"></i>
-    </button>
-
-    <header>
-      <div class="avatar">VT</div>
-      <div>
-        <h1>Vishal Tripathi</h1>
-        <p class="lead">Integrated BS-MS Student @ IISER Mohali</p>
-        <div style="color: var(--muted); margin-top: 6px; font-size: 0.95rem;">
-          <i class="fas fa-atom" style="margin-right: 6px;"></i> Condensed Matter Physics &nbsp;|&nbsp; 
-          <i class="fas fa-code" style="margin-right: 6px;"></i> Scientific Computing
-        </div>
+    <nav class="navbar">
+      <a href="#" class="brand">Vishal Tripathi</a>
+      
+      <div class="nav-links">
+        <button class="pill active" onclick="showSection('about', this)">About</button>
+        <button class="pill" onclick="showSection('research', this)">Research</button>
+        <button class="pill" onclick="showSection('experience', this)">Experience</button>
+        <button class="pill" onclick="showSection('gallery', this)">Gallery</button>
+        <button class="pill" onclick="showSection('projects', this)">Works</button>
+        <button class="pill" onclick="showSection('cv', this)">CV</button>
       </div>
-    </header>
 
-    <div class="nav-container">
-      <button class="pill active" onclick="showSection('about', this)">About</button>
-      <button class="pill" onclick="showSection('research', this)">Research</button>
-      <button class="pill" onclick="showSection('experience', this)">Experience</button>
-      <button class="pill" onclick="showSection('projects', this)">Projects</button>
-      <button class="pill" onclick="showSection('cv', this)">CV</button>
-    </div>
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
 
     <div class="grid">
       
@@ -202,24 +177,20 @@
           <div class="card-panel">
             <h2>About Me</h2>
             <p>
-              I am a fourth-year BS-MS student specializing in Physics at the Indian Institute of Science Education and Research (IISER), Mohali. My academic focus lies at the intersection of <strong>Quantum Physics</strong>, <strong>Nuclear Physics</strong>, and <strong>Computational Material Science</strong>.
+              Hi, I'm Vishal. I am a fourth-year BS-MS student specializing in Physics at the Indian Institute of Science Education and Research (IISER), Mohali. My academic focus lies at the intersection of <strong>Quantum Physics</strong> and <strong>Computational Material Science</strong>.
             </p>
             <p>
-              Currently, I am working on first-principles calculations using <strong>Density Functional Theory (DFT)</strong> to study 2D materials like TMDCs. I am passionate about leveraging high-performance computing and machine learning to accelerate materials discovery.
-            </p>
-            <p>
-              I am actively looking for Master's Thesis opportunities in Europe (Austria/Germany) for the academic year 2026-2027.
+              Currently, I am working on first-principles calculations using <strong>Density Functional Theory (DFT)</strong> to study 2D materials like TMDCs. I am passionate about leveraging high-performance computing to accelerate materials discovery.
             </p>
           </div>
 
           <div class="card-panel" style="border-left: 4px solid var(--accent-secondary);">
             <h3 style="display:flex; align-items:center; gap:10px;">
-              <i class="fas fa-bullhorn" style="color:var(--accent-secondary)"></i> Latest Updates
+              <i class="fas fa-bullhorn" style="color:var(--accent-secondary)"></i> Recent Updates
             </h3>
             <ul style="padding-left: 20px; margin-bottom: 0; color: var(--muted);">
-              <li><strong>Nov 2025:</strong> Preparing applications for Master's Thesis positions in Vienna.</li>
-              <li><strong>Oct 2025:</strong> Attended Brain Computation & Learning Workshop at IISc Bangalore.</li>
-              <li><strong>Sep 2025:</strong> Started work on MoSe2 exfoliation techniques.</li>
+              <li><strong>Nov 2025:</strong> Preparing Master's Thesis applications for Austria/Germany.</li>
+              <li><strong>Oct 2025:</strong> Attended Brain Computation Workshop at IISc Bangalore.</li>
             </ul>
           </div>
         </div>
@@ -230,19 +201,19 @@
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
               <div>
                 <h3><i class="fas fa-layer-group"></i> 2D Materials</h3>
-                <p class="muted">Study of Transition Metal Dichalcogenides (TMDCs) like MoSe2 using mechanical exfoliation and Photoluminescence spectroscopy.</p>
+                <p class="muted">Study of TMDCs like MoSe2 using mechanical exfoliation and PL spectroscopy.</p>
               </div>
               <div>
                 <h3><i class="fas fa-microchip"></i> Computational Physics</h3>
-                <p class="muted">Electronic structure calculations using Quantum ESPRESSO and VASP. Developing automated workflows for high-throughput screening.</p>
+                <p class="muted">DFT calculations using Quantum ESPRESSO. High-throughput screening workflows.</p>
               </div>
               <div>
                 <h3><i class="fas fa-wave-square"></i> Quantum Field Theory</h3>
-                <p class="muted">Interest in scalar fields, spinors, and the Dirac Hamiltonian, applied to condensed matter systems.</p>
+                <p class="muted">Dirac Hamiltonian, scalar fields, and spinors in condensed matter.</p>
               </div>
               <div>
                 <h3><i class="fas fa-brain"></i> Scientific ML</h3>
-                <p class="muted">Applying Machine Learning models to predict material properties and optimize DFT functionals.</p>
+                <p class="muted">Optimizing DFT functionals using machine learning models.</p>
               </div>
             </div>
           </div>
@@ -251,22 +222,49 @@
         <div id="experience" class="section" hidden>
           <div class="card-panel">
             <h2>Experience</h2>
-            
             <div class="timeline-item">
               <span class="date">May 2024 - Present</span>
               <h3>Undergraduate Researcher</h3>
-              <p class="muted">IISER Mohali, Lab of Dr. [Name]</p>
-              <p>Investigating the optical properties of exfoliated MoSe2 monolayers. Performing DFT calculations to corroborate experimental band gaps.</p>
-              <div class="chip-container">
-                <span class="chip">Python</span> <span class="chip">Quantum ESPRESSO</span> <span class="chip">Spectroscopy</span>
-              </div>
+              <p class="muted">IISER Mohali</p>
+              <p>Investigating optical properties of exfoliated MoSe2 monolayers. Performing DFT calculations to corroborate experimental band gaps.</p>
+              <div class="chip-container"><span class="chip">Python</span> <span class="chip">QE</span></div>
             </div>
-
             <div class="timeline-item">
               <span class="date">Oct 2025</span>
               <h3>Workshop Participant</h3>
               <p class="muted">IISc Bangalore</p>
-              <p>Attended the Brain Computation and Learning (BCL) workshop. Explored neural network models inspired by biological processes.</p>
+              <p>Attended the Brain Computation and Learning (BCL) workshop.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="gallery" class="section" hidden>
+          <div class="card-panel">
+            <h2>Gallery</h2>
+            <p class="muted" style="margin-bottom: 20px;">Snapshots from labs, workshops, and travels.</p>
+            
+            <div class="gallery-grid">
+              
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=400" alt="Lab Work">
+                <div class="gallery-overlay">Lab setup at IISER Mohali</div>
+              </div>
+
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&q=80&w=400" alt="Workshop">
+                <div class="gallery-overlay">BCL Workshop @ IISc Bangalore</div>
+              </div>
+
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&q=80&w=400" alt="Campus">
+                <div class="gallery-overlay">Campus Library</div>
+              </div>
+
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=400" alt="Microscope">
+                <div class="gallery-overlay">Exfoliation Microscopy</div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -275,31 +273,18 @@
           <div class="card-panel">
             <h2>Works & Code</h2>
             <div class="project-grid">
-              
               <a href="#" class="project-card">
-                <div class="project-top">
-                  <i class="fas fa-laptop-code"></i>
-                  <i class="fas fa-external-link-alt" style="font-size: 0.8rem"></i>
-                </div>
+                <div class="project-top"><i class="fas fa-laptop-code"></i></div>
                 <h3>Automated DFT Workflow</h3>
-                <p class="muted" style="font-size: 0.9rem">Scripts to automate input generation and parsing for Quantum ESPRESSO.</p>
-                <div class="chip-container">
-                  <span class="chip">Python</span> <span class="chip">Bash</span>
-                </div>
+                <p class="muted">Scripts to automate input generation for Quantum ESPRESSO.</p>
+                <div class="chip-container"><span class="chip">Python</span> <span class="chip">Bash</span></div>
               </a>
-
               <a href="#" class="project-card">
-                <div class="project-top">
-                  <i class="fas fa-file-powerpoint"></i>
-                  <i class="fas fa-download" style="font-size: 0.8rem"></i>
-                </div>
+                <div class="project-top"><i class="fas fa-file-powerpoint"></i></div>
                 <h3>Nano-Thermometry Talk</h3>
-                <p class="muted" style="font-size: 0.9rem">LaTeX slides for presentation on "Nanometre-scale Thermometry in Living Cells".</p>
-                <div class="chip-container">
-                  <span class="chip">LaTeX</span> <span class="chip">Beamer</span>
-                </div>
+                <p class="muted">LaTeX slides on "Nanometre-scale Thermometry in Living Cells".</p>
+                <div class="chip-container"><span class="chip">LaTeX</span> <span class="chip">Beamer</span></div>
               </a>
-
             </div>
           </div>
         </div>
@@ -308,31 +293,20 @@
           <div class="card-panel">
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <h2 style="border:none; margin:0;">Curriculum Vitae</h2>
-              <a href="#" class="pill" style="text-decoration:none;"><i class="fas fa-download"></i> Download PDF</a>
+              <a href="#" class="pill"><i class="fas fa-download"></i> PDF</a>
             </div>
             <hr style="border:0; border-top:1px solid var(--border); margin: 20px 0;">
-
             <h3>Education</h3>
             <div class="timeline-item">
               <span class="date">2022 - 2027 (Expected)</span>
               <strong>BS-MS Dual Degree</strong><br>
-              Indian Institute of Science Education and Research (IISER), Mohali<br>
+              IISER Mohali<br>
               <span class="muted">Major: Physics</span>
             </div>
-
-            <h3>Technical Skills</h3>
-            <div class="chip-container" style="margin-bottom: 24px;">
-              <span class="chip">Python</span>
-              <span class="chip">C++</span>
-              <span class="chip">Fortran</span>
-              <span class="chip">Quantum ESPRESSO</span>
-              <span class="chip">VASP</span>
-              <span class="chip">LaTeX</span>
-              <span class="chip">Linux/Git</span>
+            <h3>Skills</h3>
+            <div class="chip-container">
+              <span class="chip">Python</span><span class="chip">Fortran</span><span class="chip">Quantum ESPRESSO</span><span class="chip">VASP</span><span class="chip">LaTeX</span>
             </div>
-
-            <h3>Selected Coursework</h3>
-            <p class="muted">Quantum Mechanics I & II, Statistical Mechanics, Condensed Matter Physics, Nuclear Physics, Computational Methods.</p>
           </div>
         </div>
 
@@ -341,67 +315,42 @@
       <aside>
         <div class="card-panel" style="position:sticky; top: 100px;">
           <h3 style="margin-bottom: 12px;">Contact</h3>
-          <p class="muted" style="font-size: 0.9rem;">
-            Feel free to reach out for research collaborations or thesis opportunities.
-          </p>
-          
           <div style="margin-top: 20px;">
-            <a href="mailto:ms22138@iisermohali.ac.in" class="social-link">
-              <i class="fas fa-envelope" style="width: 20px;"></i> Email Me
-            </a>
-            <a href="https://github.com/vishal10054" target="_blank" class="social-link">
-              <i class="fab fa-github" style="width: 20px;"></i> GitHub
-            </a>
-            <a href="#" target="_blank" class="social-link">
-              <i class="fab fa-linkedin" style="width: 20px;"></i> LinkedIn
-            </a>
-            <a href="#" target="_blank" class="social-link">
-              <i class="fab fa-twitter" style="width: 20px;"></i> Twitter / X
-            </a>
+            <a href="mailto:ms22138@iisermohali.ac.in" class="social-link"><i class="fas fa-envelope" style="width: 20px;"></i> Email</a>
+            <a href="https://github.com/vishal10054" target="_blank" class="social-link"><i class="fab fa-github" style="width: 20px;"></i> GitHub</a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin" style="width: 20px;"></i> LinkedIn</a>
+            <a href="#" class="social-link"><i class="fab fa-twitter" style="width: 20px;"></i> Twitter / X</a>
           </div>
-
-          <h4>Location</h4>
-          <div class="muted" style="font-size: 0.9rem;">
-            <i class="fas fa-map-marker-alt"></i> Mohali, Punjab, India
-          </div>
+          <h4 style="color:var(--muted); font-size:0.75rem; text-transform:uppercase; margin-top:24px;">Location</h4>
+          <div class="muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> Mohali, India</div>
         </div>
       </aside>
 
     </div>
 
     <footer>
-      <p>&copy; <span id="year"></span> Vishal Tripathi. Built with HTML/CSS.</p>
+      <p>&copy; <span id="year"></span> Vishal Tripathi.</p>
     </footer>
 
   </div>
 
   <script>
-    // 1. Set Current Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 2. Tab Navigation Logic
+    // Navigation Logic
     function showSection(sectionId, btn) {
-      // Hide all sections
       document.querySelectorAll('.section').forEach(el => el.hidden = true);
-      // Show target section
       document.getElementById(sectionId).hidden = false;
-      
-      // Update pills state
-      document.querySelectorAll('.nav-container .pill').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.navbar .pill').forEach(el => el.classList.remove('active'));
       btn.classList.add('active');
-      
-      // Scroll to top slightly if on mobile
-      if(window.innerWidth < 768) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      if(window.innerWidth < 768) window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 3. Dark Mode Logic
+    // Dark Mode Logic
     const themeBtn = document.getElementById('themeBtn');
     const icon = themeBtn.querySelector('i');
-    
-    // Check saved preference
     const savedTheme = localStorage.getItem('theme');
+    
     if (savedTheme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       icon.classList.remove('fa-moon');
