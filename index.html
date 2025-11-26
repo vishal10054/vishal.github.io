@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vishal — Research & CV</title>
+  <meta name="description" content="Vishal — computational condensed matter, ML. CV, research, works and contact." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #fffaf6;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --text: #1f2937;
+      --accent1: #ffd6e0; /* pink */
+      --accent2: #d6f7ff; /* blue */
+      --accent3: #e7ffd6; /* green */
+      --accent4: #f0e6ff; /* purple */
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(31,41,55,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,var(--accent2) 0%, var(--bg) 35%);color:var(--text);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:980px;margin:36px auto;padding:20px}
+    header{display:flex;gap:18px;align-items:center; margin-bottom:18px}
+    .logo{width:76px;height:76px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:32px;background:linear-gradient(135deg,var(--accent1),var(--accent4));color:var(--text);box-shadow:var(--shadow)}
+    h1{margin:0;font-size:22px}
+    p.lead{margin:4px 0 0;color:var(--muted)}
+    nav.pills{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+    .pill{background:linear-gradient(90deg,rgba(124,58,237,0.08),rgba(99,102,241,0.03));padding:8px 12px;border-radius:999px;font-weight:600;color:var(--text);border:1px solid rgba(124,58,237,0.06);cursor:pointer}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:18px}
+    main.card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid rgba(31,41,55,0.04)}
+    aside.card{position:sticky;top:24px;background:linear-gradient(180deg,rgba(255,255,255,0.9),var(--card));padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+    .explore{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .tile{background:linear-gradient(180deg,rgba(255,255,255,0.9),#fff);padding:12px;border-radius:12px;border:1px solid rgba(31,41,55,0.03);cursor:pointer;transition:transform .18s ease,box-shadow .18s}
+    .tile:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(31,41,55,0.08)}
+    .tile h4{margin:0 0 6px;font-size:15px}
+    .tile p{margin:0;color:var(--muted);font-size:13px}
+    /* content sections */
+    .section{margin-top:12px;padding:14px;border-radius:10px;border:1px solid rgba(31,41,55,0.03);background:linear-gradient(180deg,#fff,rgba(255,255,255,0.95))}
+    .section h2{margin:0 0 8px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+    /* accordion */
+    .accordion{margin-top:12px}
+    .acc-item{border-radius:10px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(31,41,55,0.03)}
+    .acc-btn{display:flex;justify-content:space-between;align-items:center;padding:12px;background:linear-gradient(90deg,rgba(255,255,255,0.6),rgba(255,255,255,0.8));cursor:pointer}
+    .acc-btn h3{margin:0;font-size:15px}
+    .acc-body{max-height:0;overflow:hidden;padding:0 12px;transition:max-height .32s cubic-bezier(.2,.9,.3,1),padding .2s; background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff)}
+    .acc-body.open{padding:12px;border-top:1px dashed rgba(31,41,55,0.04);max-height:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));font-size:13px;margin-right:8px;margin-bottom:8px}
+    /* CV specifics */
+    .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}.cv-grid{grid-template-columns:1fr}}
+    .footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+    /* subtle focus */
+    .pill:focus,.tile:focus,.acc-btn:focus{outline:3px solid rgba(124,58,237,0.12);outline-offset:2px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">V</div>
+      <div>
+        <h1>Vishal</h1>
+        <p class="lead">Computational condensed matter • Machine learning • Reproducible DFT workflows</p>
+        <nav class="pills" aria-label="Main navigation">
+          <div class="pill" data-open="about">About</div>
+          <div class="pill" data-open="research">Research</div>
+          <div class="pill" data-open="experience">Experience</div>
+          <div class="pill" data-open="cv">CV</div>
+          <div class="pill" data-open="works">Works</div>
+          <div class="pill" data-open="contact">Contact</div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="card" aria-live="polite">
+        <!-- Intro + explorer tiles -->
+        <div class="section" id="intro">
+          <h2>Welcome — explore my profile</h2>
+          <p class="muted">This single page contains all subsections. Click any tile or the pills above to jump to a focused view.</p>
+
+          <div class="explore" role="list">
+            <div class="tile" role="listitem" tabindex="0" data-open="about">
+              <h4>About me</h4>
+              <p>Short biography, education and research aims.</p>
+            </div>
+            <div class="tile" role="listitem" tabindex="0" data-open="research">
+              <h4>Research interests</h4>
+              <p>DFT, 2D materials, ML for materials, high-throughput workflows.</p>
+            </div>
+            <div class="tile" role="listitem" tabindex="0" data-open="experience">
+              <h4>Experience</h4>
+              <p>Research positions, internships, and teaching.</p>
+            </div>
+            <div class="tile" role="listitem" tabindex="0" data-open="cv">
+              <h4>Online CV</h4>
+              <p>Education, positions, skills, publications in one place.</p>
+            </div>
+            <div class="tile" role="listitem" tabindex="0" data-open="works">
+              <h4>Works & code</h4>
+              <p>Preprints, repositories, and tools.</p>
+            </div>
+            <div class="tile" role="listitem" tabindex="0" data-open="contact">
+              <h4>Contact</h4>
+              <p>Email and links to GitHub.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content sections (accordion-like, one open at a time) -->
+        <div id="sections">
+          <div class="section" id="about-section" hidden>
+            <h2>About</h2>
+            <p class="muted">Replace this with your longer biographical paragraph — focus, supervisors, and what you're looking for.</p>
+            <div style="margin-top:10px">
+              <span class="chip">DFT</span><span class="chip">2D materials</span><span class="chip">Machine Learning</span><span class="chip">Scientific Computing</span>
+            </div>
+          </div>
+
+          <div class="section" id="research-section" hidden>
+            <h2>Research interests</h2>
+            <p class="muted">Density Functional Theory, many-body corrections, materials informatics, automated workflows.</p>
+
+            <div class="accordion" id="research-acc">
+              <div class="acc-item">
+                <div class="acc-btn" tabindex="0" data-acc="r1"><h3>DFT & electronic structure</h3><div>▼</div></div>
+                <div class="acc-body" id="r1">
+                  <p>Work on accurate electronic structure calculations, band structure, and property prediction using Quantum ESPRESSO and VASP. Emphasis on reproducible input generation and analysis.</p>
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <div class="acc-btn" tabindex="0" data-acc="r2"><h3>ML for materials</h3><div>▼</div></div>
+                <div class="acc-body" id="r2">
+                  <p>Develop models for predicting materials properties, uncertainty quantification, and combining physics-informed features with learned representations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" id="experience-section" hidden>
+            <h2>Experience</h2>
+            <p class="muted">Summaries of research roles and internships.</p>
+
+            <div style="margin-top:12px">
+              <div class="acc-item">
+                <div class="acc-btn" tabindex="0" data-acc="e1"><h3>Researcher — Institution (Year–Year)</h3><div>▼</div></div>
+                <div class="acc-body" id="e1">
+                  <p>Describe primary responsibilities (code, simulation, data analysis) and a key achievement (paper, tool, dataset).</p>
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <div class="acc-btn" tabindex="0" data-acc="e2"><h3>Intern / TA — Institution (Year)</h3><div>▼</div></div>
+                <div class="acc-body" id="e2">
+                  <p>Short description of tasks and skills developed.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" id="cv-section" hidden>
+            <h2>CV — Vishal</h2>
+            <p class="muted">A live, web-first CV. Edit these blocks to keep your CV current.</p>
+
+            <div style="margin-top:8px" class="cv-grid">
+              <div>
+                <h3 style="margin-bottom:6px">Education</h3>
+                <ul style="margin-top:0;color:var(--muted)">
+                  <li><strong>Integrated BS-MS</strong>, Institution — Year</li>
+                  <li><strong>PhD</strong> (ongoing), Institution — Year–Present</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 style="margin-bottom:6px">Contact</h3>
+                <p class="muted" style="margin:0">Email: <a href="mailto:ms22138@iisermohali.ac.in">ms22138@iisermohali.ac.in</a><br>GitHub: <a href="https://github.com/vishal10054" target="_blank">github.com/vishal10054</a></p>
+              </div>
+            </div>
+
+            <div style="margin-top:12px">
+              <h3 style="margin-bottom:6px">Selected publications</h3>
+              <ol style="margin-top:0;color:var(--muted)">
+                <li><strong>Author et al.</strong> (YEAR). Title. <em>Journal</em>.</li>
+                <li><strong>Author et al.</strong> (YEAR). Title. <em>Conference</em>.</li>
+              </ol>
+            </div>
+
+            <div style="margin-top:12px">
+              <h3 style="margin-bottom:6px">Skills</h3>
+              <p class="muted">Python • Fortran/C++ • Quantum ESPRESSO • VASP • Git • LaTeX • PyTorch</p>
+            </div>
+          </div>
+
+          <div class="section" id="works-section" hidden>
+            <h2>Works</h2>
+            <p class="muted">Code, preprints and tools.</p>
+            <ul style="margin-top:8px;color:var(--muted)">
+              <li><strong>Code release:</strong> ExampleRepo — <a href="#">github.com/your/repo</a></li>
+              <li><strong>Preprint:</strong> Title — short description.</li>
+            </ul>
+          </div>
+
+          <div class="section" id="contact-section" hidden>
+            <h2>Contact</h2>
+            <p class="muted">Feel free to reach out for collaborations, postdoc opportunities, or questions about my work.</p>
+            <p style="margin-top:8px">Email: <a href="mailto:ms22138@iisermohali.ac.in">ms22138@iisermohali.ac.in</a></p>
+            <p>GitHub: <a href="https://github.com/vishal10054" target="_blank">github.com/vishal10054</a></p>
+          </div>
+        </div>
+      </main>
+
+      <aside class="card" aria-label="Sidebar">
+        <div>
+          <h3 style="margin:0 0 6px 0">Quick explore</h3>
+          <div class="muted" style="margin-bottom:8px">Jump to a subsection</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="pill" data-open="about">About</button>
+            <button class="pill" data-open="research">Research</button>
+            <button class="pill" data-open="experience">Experience</button>
+            <button class="pill" data-open="cv">CV</button>
+            <button class="pill" data-open="works">Works</button>
+            <button class="pill" data-open="contact">Contact</button>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <h4 style="margin:0 0 6px 0">Availability</h4>
+          <p class="muted" style="margin:0">Open to collaborations, code reviews, and speaking invites.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer">© <span id="year"></span> Vishal — Built with ❤️ • Hosted on GitHub Pages</div>
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // utilities: show one section at a time
+    const map = {
+      about: 'about-section',
+      research: 'research-section',
+      experience: 'experience-section',
+      cv: 'cv-section',
+      works: 'works-section',
+      contact: 'contact-section'
+    };
+
+    function showSection(key){
+      // hide all
+      Object.values(map).forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) el.hidden = true;
+      });
+      // close all accordion bodies
+      document.querySelectorAll('.acc-body').forEach(b=>{ b.classList.remove('open'); });
+      // show chosen
+      const id = map[key];
+      const el = document.getElementById(id);
+      if(el){
+        el.hidden = false;
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+
+    // pill / tile click
+    document.querySelectorAll('[data-open]').forEach(btn=>{
+      btn.addEventListener('click', ()=> showSection(btn.dataset.open));
+      btn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showSection(btn.dataset.open); }});
+    });
+
+    // accordion toggle (delegated)
+    document.addEventListener('click', (e)=>{
+      const accBtn = e.target.closest('.acc-btn');
+      if(!accBtn) return;
+      const id = accBtn.dataset.acc;
+      const body = document.getElementById(id);
+      if(!body) return;
+      const open = body.classList.toggle('open');
+      // if opened, scroll into view a little
+      if(open) body.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+    // keyboard for accordion
+    document.addEventListener('keydown', (e)=>{
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      const accBtn = document.activeElement.closest ? document.activeElement.closest('.acc-btn') : null;
+      if(!accBtn) return;
+      e.preventDefault();
+      accBtn.click();
+    });
+
+    // accessible: open "about" by default on first load
+    if(!location.hash) showSection('about'); // default
+    // support hash links like #research
+    if(location.hash){
+      const k = location.hash.replace('#','');
+      if(map[k]) showSection(k);
+    }
+  </script>
+</body>
+</html>
