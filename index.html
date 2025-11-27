@@ -3,165 +3,376 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vishal Tripathi</title>
-  <meta name="description" content="Vishal Tripathi." />
+  <title>Vishal Tripathi | Physics & Material Science</title>
+  <meta name="description" content="Academic portfolio of Vishal Tripathi." />
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      /* Light Mode */
-      --bg: #fffaf6;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: rgba(31,41,55,0.08);
-      --accent-primary: #6366f1; 
-      --accent-secondary: #ec4899;
-      --shadow: 0 4px 20px -5px rgba(31,41,55,0.1);
-      --code-bg: #f3f4f6;
+      /* Modern Light Theme */
+      --bg-color: #f8fafc;
+      --bg-gradient: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+      --bg-gradient-light: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f8fafc 60%);
+      
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-border: rgba(255, 255, 255, 0.6);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent: #4f46e5; /* Indigo */
+      --accent-glow: rgba(79, 70, 229, 0.3);
+      --surface-hover: #f1f5f9;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      
+      --radius: 20px;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
-    /* Dark Mode */
+    /* Dark Theme Overrides */
     [data-theme="dark"] {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --border: rgba(255,255,255,0.1);
-      --accent-primary: #818cf8;
-      --accent-secondary: #f472b6;
-      --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-      --code-bg: #334155;
+      --bg-color: #020617;
+      --bg-gradient-light: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #020617 60%);
+      
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent: #818cf8;
+      --accent-glow: rgba(129, 140, 248, 0.2);
+      --surface-hover: rgba(255,255,255,0.05);
     }
 
-    * { box-sizing: border-box; transition: background-color 0.3s ease, border-color 0.3s ease; }
+    /* Base Reset & Typography */
+    * { box-sizing: border-box; }
     
-    html, body {
-      margin: 0; font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.6;
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: var(--bg-color);
+      background-image: var(--bg-gradient-light);
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: color 0.3s ease;
+      min-height: 100vh;
     }
 
     /* Layout */
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
-    
-    /* Top Navigation Bar */
-    .navbar {
-      position: sticky; top: 20px; z-index: 100;
-      background: rgba(var(--card), 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 10px 20px;
-      margin-bottom: 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: var(--shadow);
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
     }
 
-    .brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
-    
-    .nav-links { display: flex; gap: 4px; overflow-x: auto; }
-    
-    .pill {
-      background: transparent; border: none;
-      padding: 8px 14px; border-radius: 8px;
-      font-weight: 500; color: var(--muted);
-      cursor: pointer; transition: all 0.2s;
-      font-family: inherit; font-size: 0.9rem;
-      white-space: nowrap;
+    /* Animation for Tab Switching */
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .pill:hover { color: var(--text); background: var(--border); }
-    .pill.active { background: var(--text); color: var(--bg); }
+    
+    .section {
+      animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* --------------------------
+       Navigation 
+    --------------------------- */
+    .navbar {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 100px;
+      padding: 8px 12px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: 0 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      background: rgba(0,0,0,0.03);
+      padding: 4px;
+      border-radius: 100px;
+    }
+    [data-theme="dark"] .nav-links { background: rgba(255,255,255,0.05); }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    
+    .nav-btn:hover { color: var(--text-primary); }
+    
+    .nav-btn.active {
+      background: var(--card-bg);
+      color: var(--accent);
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+    }
 
     .theme-toggle {
-      background: transparent; border: none;
-      color: var(--muted); cursor: pointer;
-      font-size: 1.1rem; padding: 8px;
-      transition: color 0.2s;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      transition: background 0.2s;
     }
-    .theme-toggle:hover { color: var(--accent-primary); }
+    .theme-toggle:hover { background: var(--surface-hover); color: var(--text-primary); }
 
-    /* Main Grid */
-    .grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 40px; }
-    
-    /* Cards */
-    .card-panel {
-      background: var(--card); border-radius: 16px;
-      padding: 24px; border: 1px solid var(--border);
-      box-shadow: var(--shadow); margin-bottom: 24px;
+    /* --------------------------
+       Main Grid Layout 
+    --------------------------- */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px; /* Content | Sidebar */
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* --------------------------
+       Cards & Content 
+    --------------------------- */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(8px);
+    }
+
+    h1, h2, h3 { margin-top: 0; color: var(--text-primary); letter-spacing: -0.02em; }
+    h2 { 
+      font-size: 1.5rem; 
+      padding-bottom: 16px; 
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+    }
+
+    p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+    strong { color: var(--text-primary); font-weight: 600; }
+
+    /* Stacked Lists (Research & Projects) - NO GRIDS */
+    .stacked-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stacked-item {
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--surface-hover);
+      border: 1px solid transparent;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .stacked-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      background: var(--card-bg);
+    }
+
+    .stacked-item h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .stacked-item i { color: var(--accent); }
+
+    /* Timeline Styles (Experience) */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
     }
     
-    h2 { font-size: 1.4rem; margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; }
-    h3 { font-size: 1.1rem; margin: 0 0 8px 0; color: var(--text); }
-    
-    /* Chips, Timelines, Projects (Same as before) */
-    .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .chip { font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: var(--code-bg); color: var(--text); font-family: 'JetBrains Mono', monospace; border: 1px solid var(--border); }
-    .timeline-item { position: relative; padding-left: 24px; margin-bottom: 24px; border-left: 2px solid var(--border); }
-    .timeline-item::before { content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-primary); }
-    .date { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: block; }
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-    .project-card { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 12px; text-decoration: none; color: inherit; display: block; transition: transform 0.2s; }
-    .project-card:hover { transform: translateY(-4px); border-color: var(--accent-primary); }
-    .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+      opacity: 0.3;
+    }
 
-    /* GALLERY STYLES (NEW) */
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -38px;
+      top: 6px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+
+    .date-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    /* Chips */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      background: var(--bg-color);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+    }
+
+    /* Gallery */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 16px;
     }
-    .gallery-item {
-      position: relative;
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
       border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 1 / 1; /* Makes images square */
-      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
       cursor: pointer;
+      background: var(--surface-hover);
     }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .gallery-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      padding: 20px 10px 10px;
-      color: white; font-size: 0.85rem;
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-img:hover { transform: scale(1.03); box-shadow: var(--shadow-lg); }
 
-    /* Sidebar */
-    .social-link { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; padding: 8px 0; font-weight: 500; }
-    .social-link:hover { color: var(--accent-primary); }
+    /* Sidebar Profile */
+    .profile-sticky {
+      position: sticky;
+      top: 110px;
+    }
     
-    footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-    @media (max-width: 768px) {
-      .grid { grid-template-columns: 1fr; }
-      .navbar { flex-wrap: wrap; gap: 10px; }
-      .nav-links { order: 3; width: 100%; padding-top: 10px; border-top: 1px solid var(--border); }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .social-btn:hover {
+      background: var(--surface-hover);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .status-box {
+      margin-top: 20px;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), transparent);
+      border: 1px solid var(--accent-glow);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .status-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      align-items: baseline;
+    }
+    .status-item:last-child { margin-bottom: 0; }
+    .status-item i { color: var(--accent); font-size: 0.8rem; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px 0;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 850px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .navbar { flex-direction: column; gap: 12px; border-radius: 20px; padding: 16px; }
+      .nav-links { width: 100%; overflow-x: auto; justify-content: space-between; }
+      .profile-sticky { position: static; }
+      .container { padding: 1rem; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrap">
+  <div class="container">
     
+    <!-- Navigation -->
     <nav class="navbar">
       <a href="#" class="brand">Vishal Tripathi</a>
       
       <div class="nav-links">
-        <button class="pill active" onclick="showSection('about', this)">About</button>
-        <button class="pill" onclick="showSection('research', this)">Research</button>
-        <button class="pill" onclick="showSection('experience', this)">Experience</button>
-        <button class="pill" onclick="showSection('gallery', this)">Gallery</button>
-        <button class="pill" onclick="showSection('projects', this)">Works</button>
-        <button class="pill" onclick="showSection('cv', this)">CV</button>
+        <button class="nav-btn active" onclick="switchTab('about', this)">About</button>
+        <button class="nav-btn" onclick="switchTab('research', this)">Research</button>
+        <button class="nav-btn" onclick="switchTab('experience', this)">Experience</button>
+        <button class="nav-btn" onclick="switchTab('projects', this)">Works</button>
+        <button class="nav-btn" onclick="switchTab('gallery', this)">Gallery</button>
+        <button class="nav-btn" onclick="switchTab('cv', this)">CV</button>
       </div>
 
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle Dark Mode">
@@ -169,220 +380,279 @@
       </button>
     </nav>
 
-    <div class="grid">
+    <div class="main-grid">
       
+      <!-- Main Content Area -->
       <main>
         
+        <!-- ABOUT SECTION -->
         <div id="about" class="section">
-          <div class="card-panel">
-            <h2>About Me</h2>
-            <p>
-              Hi, I'm Vishal. I am a fourth-year BS-MS student majoring in Physics at the Indian Institute of Science Education and Research (IISER), Mohali. My academic focus lies at the intersection of <strong>Condensed Matter</strong> , <strong>Photonics</strong> and <strong>Computational Material Science</strong>. I am also currently looking for masters thesis opportunities in the field of <strong>experimental condensed matter physics</strong>. 
+          <div class="card">
+            <h2><i class="fas fa-user-astronaut" style="color:var(--accent); margin-right:10px;"></i>Hello, I'm Vishal.</h2>
+            <p style="font-size: 1.1rem; color: var(--text-primary);">
+              I am a fourth-year <strong>BS-MS Physics</strong> student at <span style="color:var(--accent)">IISER Mohali</span>. 
             </p>
             <p>
-              Currently I am working on understanding fundamentals of superconductivity, promixity effects and graphene. I am also working on learning about some transporting calculations in various materials using Density functional theory.
-          </div>
-
-          <div class="card-panel" style="border-left: 4px solid var(--accent-secondary);">
-            <h3 style="display:flex; align-items:center; gap:10px;">
-              <i class="fas fa-bullhorn" style="color:var(--accent-secondary)"></i> Recent Updates
-            </h3>
-            <ul style="padding-left: 20px; margin-bottom: 0; color: var(--muted);">
-              <li><strong>November 2025:</strong> Endsemester exams end.</li>
-              <li><strong>October 2025:</strong> Looking for masters thesis.</li>
-              <li><strong>August 2025:</strong> Finished my summer internship at IIT Goa on semiconductor fabrication and characterization.</li>
-            </ul>
+              My academic focus lies at the exciting intersection of <strong>Condensed Matter</strong>, <strong>Photonics</strong>, and <strong>Computational Material Science</strong>. I thrive on bridging the gap between theoretical models and experimental realities.
+            </p>
+            <p>
+              Currently, I am investigating the fundamentals of superconductivity, proximity effects, and graphene transport. I am actively seeking <strong>Master's Thesis opportunities</strong> in Experimental Condensed Matter Physics for the upcoming academic cycle.
+            </p>
           </div>
         </div>
 
+        <!-- RESEARCH SECTION (Stacked, No Grid) -->
         <div id="research" class="section" hidden>
-          <div class="card-panel">
+          <div class="card">
             <h2>Research Interests</h2>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div>
-                <h3><i class="fas fa-layer-group"></i>Flake production and quality deivce fabrication</h3>
-                <p class="muted">Having prior experience of fabricating high quality samples, I want to work on flake quality control and high quality productions for even better results. </p>
-              </div>
-              <div>
-                <h3><i class="fas fa-microchip"></i> Computational Material Science</h3>
-                <p class="muted">Using of density functional theory through quantum espresso to find electronic properties of materials. Band Structure calculations and DOS structures for materials involving different thickness of TMDs under contraints is something I have been exploring. On the way to learn about transport calculations in graphene or other devices using DFT. </p>
-              </div>
-              <div>
-                <h3><i class="fas fa-layer-group"></i>Proximity effects</h3>
-                <p class="muted">The study of superconducting and/or semiconducting materials and there hybrids for various future applications. </p>
-              </div> 
-            </div>
-          </div>
-        </div>
-
-        <div id="experience" class="section" hidden>
-          <div class="card-panel">
-            <h2>Experience</h2>
-            <div class="timeline-item">
-              <span class="date">Oct 2025</span>
-              <h3>Gian Course</h3>
-              <p class="muted">IISER Mohali</p>
-              <p class="muted">Instructor: Prof. J.F. Roch, ENS-Paris Saclay</p>
-              <p>Had a wonderful course on NV centers in diamonds and there application by Prof. Roch which was organised by Prof. K.P. Singh(IISER Mohali)</p>
-            </div>  
-            <div class="timeline-item">
-              <span class="date">May 2025 - July 2025</span>
-              <h3>Summer Intern</h3>
-              <p class="muted">IIT Goa</p>
-              <p class="muted">Supervisor: Dr. Santosh Kumar</p>
-              <p>Learned about fabrication and characterization of TMDs. Worked with MoSe2, did mechanical exfoliation, 2d stacking and PL spectroscopy. </p>
-              <div class="chip-container"><span class="chip">Device fabrication and characterization</span> <span class="chip">2d stacking</span></div> <span class="chip">PL spectroscopy</span></div><span class="chip">Cleanroom handling</span></div>
-            </div>
-            <div class="timeline-item">
-              <span class="date">May 2024 - August 2024</span>
-              <h3>Summer Intern</h3>
-              <p class="muted">IIT Bombay</p>
-              <p class="muted">Supervisor: Professor Alok Shukla</p>
-              <p>Learned about density functional theory. Worked with quantum espresso to calculate band gap structure and dos structure of graphene and silicene. </p>
-              <div class="chip-container"><span class="chip">Density functional Theory</span> <span class="chip">Quantum espresso</span></div>
-            </div>
-            <div class="timeline-item">
-              <span class="date">May 2023 - July 2023</span>
-              <h3>Summer Intern</h3>
-              <p class="muted">IISER Mohali</p>
-              <p class="muted">Supervisor: Dr. P Balanarayan</p>
-              <p>Simulated wave function behaviour near 1 dimensional potential barrier and well. </p>
-              <div class="chip-container"><span class="chip">Python</span> <span class="chip">Fortran</span></div><span class="chip">Quantum mechanics</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div id="gallery" class="section" hidden>
-          <div class="card-panel">
-            <h2>Gallery</h2>
-            <p class="muted" style="margin-bottom: 20px;">Snapshots from labs, workshops, and travels.</p>
-            
-            <div class="gallery-grid">
+            <div class="stacked-list">
               
-              <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=400" alt="Lab Work">
-                <div class="gallery-overlay">Lab setup at IISER Mohali</div>
+              <div class="stacked-item">
+                <h3><i class="fas fa-layer-group"></i> Device Fabrication & Quality Control</h3>
+                <p>Leveraging prior experience in fabricating high-quality samples to push the boundaries of flake quality control. My goal is to optimize production techniques for 2D materials to achieve superior electronic transport properties.</p>
+                <div class="tags"><span class="tag">Fabrication</span><span class="tag">Cleanroom</span><span class="tag">Exfoliation</span></div>
               </div>
 
-              <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&q=80&w=400" alt="Workshop">
-                <div class="gallery-overlay">BCL Workshop @ IISc Bangalore</div>
+              <div class="stacked-item">
+                <h3><i class="fas fa-microchip"></i> Computational Material Science</h3>
+                <p> utilizing Density Functional Theory (DFT) via Quantum Espresso to model electronic properties. I focus on Band Structure and Density of States (DOS) calculations for Transition Metal Dichalcogenides (TMDs) under various constraints and thickness variations.</p>
+                <div class="tags"><span class="tag">DFT</span><span class="tag">Quantum Espresso</span><span class="tag">Band Structure</span></div>
               </div>
 
-              <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&q=80&w=400" alt="Campus">
-                <div class="gallery-overlay">Campus Library</div>
-              </div>
-
-              <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=400" alt="Microscope">
-                <div class="gallery-overlay">Exfoliation Microscopy</div>
+              <div class="stacked-item">
+                <h3><i class="fas fa-magnet"></i> Proximity Effects</h3>
+                <p>Investigating the interface phenomena between superconducting and semiconducting materials. Understanding these hybrid systems is crucial for the development of next-generation quantum devices.</p>
+                <div class="tags"><span class="tag">Superconductivity</span><span class="tag">Hybrids</span></div>
               </div>
 
             </div>
           </div>
         </div>
 
+        <!-- EXPERIENCE SECTION (Timeline) -->
+        <div id="experience" class="section" hidden>
+          <div class="card">
+            <h2>Experience Journey</h2>
+            <div class="timeline">
+              
+              <div class="timeline-entry">
+                <div class="timeline-dot"></div>
+                <span class="date-badge">Oct 2025</span>
+                <h3 style="margin-bottom: 4px;">GIAN Course Participant</h3>
+                <p class="text-sm" style="margin-bottom: 8px;"><strong>IISER Mohali</strong> | Instructor: Prof. J.F. Roch (ENS-Paris Saclay)</p>
+                <p>Intensive course on NV centers in diamonds and their quantum applications, organized by Prof. K.P. Singh.</p>
+              </div>
+
+              <div class="timeline-entry">
+                <div class="timeline-dot"></div>
+                <span class="date-badge">May 2025 - July 2025</span>
+                <h3 style="margin-bottom: 4px;">Summer Research Intern</h3>
+                <p class="text-sm" style="margin-bottom: 8px;"><strong>IIT Goa</strong> | Supervisor: Dr. Santosh Kumar</p>
+                <p>Specialized in the fabrication and characterization of TMDs. Performed mechanical exfoliation of MoSe₂, created 2D heterostructure stacks, and analyzed properties using PL spectroscopy.</p>
+                <div class="tags">
+                  <span class="tag">2D Stacking</span>
+                  <span class="tag">PL Spectroscopy</span>
+                  <span class="tag">MoSe2</span>
+                </div>
+              </div>
+
+              <div class="timeline-entry">
+                <div class="timeline-dot"></div>
+                <span class="date-badge">May 2024 - Aug 2024</span>
+                <h3 style="margin-bottom: 4px;">Computational Physics Intern</h3>
+                <p class="text-sm" style="margin-bottom: 8px;"><strong>IIT Bombay</strong> | Supervisor: Prof. Alok Shukla</p>
+                <p>Mastered Density Functional Theory (DFT). Executed Quantum Espresso simulations to calculate band gaps and DOS structures for Graphene and Silicene.</p>
+                <div class="tags">
+                  <span class="tag">DFT</span>
+                  <span class="tag">Quantum Espresso</span>
+                  <span class="tag">Silicene</span>
+                </div>
+              </div>
+
+              <div class="timeline-entry">
+                <div class="timeline-dot"></div>
+                <span class="date-badge">May 2023 - July 2023</span>
+                <h3 style="margin-bottom: 4px;">Research Intern</h3>
+                <p class="text-sm" style="margin-bottom: 8px;"><strong>IISER Mohali</strong> | Supervisor: Dr. P Balanarayan</p>
+                <p>Simulated quantum wave function behavior near 1-dimensional potential barriers and wells using computational methods.</p>
+                <div class="tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Fortran</span>
+                  <span class="tag">QM Simulations</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECTS SECTION (Stacked Cards) -->
         <div id="projects" class="section" hidden>
-          <div class="card-panel">
+          <div class="card">
             <h2>Works & Code</h2>
-            <div class="project-grid">
-              <a href="#" class="project-card">
-                <div class="project-top"><i class="fas fa-laptop-code"></i></div>
-                <h3>Automated DFT Workflow</h3>
-                <p class="muted">Scripts to automate input generation for Quantum ESPRESSO.</p>
-                <div class="chip-container"><span class="chip">Python</span> <span class="chip">Bash</span></div>
+            <div class="stacked-list">
+              
+              <a href="#" class="stacked-item" style="text-decoration:none; display:block; color:inherit;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3><i class="fas fa-code"></i> Automated DFT Workflow</h3>
+                  <i class="fas fa-external-link-alt" style="font-size:0.9rem; opacity:0.5;"></i>
+                </div>
+                <p>A comprehensive suite of Python and Bash scripts designed to automate the input generation and output parsing for Quantum ESPRESSO, significantly reducing setup time for batch calculations.</p>
+                <div class="tags"><span class="tag">Python</span><span class="tag">Bash</span><span class="tag">Automation</span></div>
               </a>
-              <a href="#" class="project-card">
-                <div class="project-top"><i class="fas fa-file-powerpoint"></i></div>
-                <h3>Nano-Thermometry Talk</h3>
-                <p class="muted">LaTeX slides on "Nanometre-scale Thermometry in Living Cells".</p>
-                <div class="chip-container"><span class="chip">LaTeX</span> <span class="chip">Beamer</span></div>
+
+              <a href="#" class="stacked-item" style="text-decoration:none; display:block; color:inherit;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3><i class="fas fa-presentation-screen"></i> Nano-Thermometry Talk</h3>
+                  <i class="fas fa-download" style="font-size:0.9rem; opacity:0.5;"></i>
+                </div>
+                <p>Detailed LaTeX Beamer slides on "Nanometre-scale Thermometry in Living Cells", presenting complex biophysical concepts with clean visualizations.</p>
+                <div class="tags"><span class="tag">LaTeX</span><span class="tag">Beamer</span><span class="tag">Science Comm</span></div>
               </a>
+
             </div>
           </div>
         </div>
 
+        <!-- GALLERY SECTION -->
+        <div id="gallery" class="section" hidden>
+          <div class="card">
+            <h2>Visual Diary</h2>
+            <p>Snapshots from labs, workshops, and academic travels.</p>
+            <div class="gallery-grid">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Lab">
+              <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Workshop">
+              <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Library">
+              <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Microscope">
+            </div>
+          </div>
+        </div>
+
+        <!-- CV SECTION -->
         <div id="cv" class="section" hidden>
-          <div class="card-panel">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <h2 style="border:none; margin:0;">Curriculum Vitae</h2>
-              <a href="#" class="pill"><i class="fas fa-download"></i> PDF</a>
+          <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+              <h2 style="border:none; margin:0; padding:0;">Curriculum Vitae</h2>
+              <button class="nav-btn active" style="font-size:0.9rem;"><i class="fas fa-file-pdf"></i> Download PDF</button>
             </div>
-            <hr style="border:0; border-top:1px solid var(--border); margin: 20px 0;">
-            <h3>Education</h3>
-            <div class="timeline-item">
-              <span class="date">2022 - 2027 (Expected)</span>
-              <strong>BS-MS Dual Degree</strong><br>
-              IISER Mohali<br>
-              <span class="muted">Major: Physics</span>
+            
+            <h3 style="margin-top:20px; color:var(--accent);">Education</h3>
+            <div style="padding-left: 16px; border-left: 2px solid var(--card-border); margin-bottom: 30px;">
+              <div style="font-weight: 600; font-size: 1.1rem;">BS-MS Dual Degree</div>
+              <div style="color: var(--text-secondary);">IISER Mohali (2022 - 2027 Expected)</div>
+              <div style="margin-top:4px; font-size:0.9rem;">Major: Physics</div>
             </div>
-            <h3>Skills</h3>
-            <div class="chip-container">
-              <span class="chip">Python</span><span class="chip">Fortran</span><span class="chip">Quantum ESPRESSO</span><span class="chip">VASP</span><span class="chip">LaTeX</span>
+
+            <h3 style="color:var(--accent);">Technical Arsenal</h3>
+            <div class="tags" style="margin-bottom: 30px;">
+              <span class="tag">Python</span>
+              <span class="tag">Fortran</span>
+              <span class="tag">Quantum ESPRESSO</span>
+              <span class="tag">VASP</span>
+              <span class="tag">LaTeX</span>
+              <span class="tag">Origin Lab</span>
             </div>
           </div>
         </div>
 
       </main>
 
-      <aside>
-        <div class="card-panel" style="position:sticky; top: 100px;">
-          <h3 style="margin-bottom: 12px;">Contact</h3>
-          <div style="margin-top: 20px;">
-            <a href="mailto:ms22138@iisermohali.ac.in" class="social-link"><i class="fas fa-envelope" style="width: 20px;"></i> Email</a>
-            <a href="https://github.com/vishal10054" target="_blank" class="social-link"><i class="fab fa-github" style="width: 20px;"></i> GitHub</a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin" style="width: 20px;"></i> LinkedIn</a>
-            <a href="#" class="social-link"><i class="fab fa-twitter" style="width: 20px;"></i> Twitter / X</a>
+      <!-- Sidebar -->
+      <aside class="profile-sticky">
+        <div class="card">
+          <h3>Connect</h3>
+          <div class="contact-links">
+            <a href="mailto:ms22138@iisermohali.ac.in" class="social-btn">
+              <i class="fas fa-envelope"></i> Email Me
+            </a>
+            <a href="https://github.com/vishal10054" target="_blank" class="social-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="#" class="social-btn">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="#" class="social-btn">
+              <i class="fab fa-twitter"></i> Twitter / X
+            </a>
           </div>
-          <h4 style="color:var(--muted); font-size:0.75rem; text-transform:uppercase; margin-top:24px;">Location</h4>
-          <div class="muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> Mohali, India</div>
+
+          <div class="status-box">
+            <div style="font-size:0.8rem; text-transform:uppercase; font-weight:700; color:var(--accent); margin-bottom:12px;">
+              Current Status
+            </div>
+            <div class="status-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Looking for Masters Thesis</span>
+            </div>
+            <div class="status-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Mohali, India</span>
+            </div>
+          </div>
         </div>
       </aside>
 
     </div>
 
     <footer>
-      <p>&copy; <span id="year"></span> Vishal Tripathi.</p>
+      &copy; <span id="year"></span> Vishal Tripathi. Built with Physics & Code.
     </footer>
 
   </div>
 
   <script>
+    // Date Logic
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Navigation Logic
-    function showSection(sectionId, btn) {
-      document.querySelectorAll('.section').forEach(el => el.hidden = true);
-      document.getElementById(sectionId).hidden = false;
-      document.querySelectorAll('.navbar .pill').forEach(el => el.classList.remove('active'));
-      btn.classList.add('active');
-      if(window.innerWidth < 768) window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Tab Switching Logic with Fade Animation
+    function switchTab(tabId, btnElement) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(sec => {
+        sec.hidden = true;
+        sec.style.animation = 'none'; // Reset animation
+      });
+
+      // Deactivate all buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      // Activate target
+      const target = document.getElementById(tabId);
+      target.hidden = false;
+      
+      // Trigger Reflow for Animation Restart
+      void target.offsetWidth; 
+      target.style.animation = 'slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+      
+      btnElement.classList.add('active');
+
+      // Scroll to top on mobile
+      if(window.innerWidth < 850) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     // Dark Mode Logic
     const themeBtn = document.getElementById('themeBtn');
     const icon = themeBtn.querySelector('i');
-    const savedTheme = localStorage.getItem('theme');
     
-    if (savedTheme === 'dark') {
+    // Check Local Storage
+    if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
+      icon.classList.replace('fa-moon', 'fa-sun');
     }
 
     themeBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      
+      if (isDark) {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+        icon.classList.replace('fa-sun', 'fa-moon');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        icon.classList.replace('fa-moon', 'fa-sun');
       }
     });
   </script>
